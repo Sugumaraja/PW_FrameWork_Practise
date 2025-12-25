@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-
+ 
       # 3️⃣ Install dependencies
       - name: Install dependencies
         run: npm ci
@@ -51,8 +51,8 @@ jobs:
           ls -R allure-report || echo "Allure report not found"
           echo "Playwright built-in report contents:"
           ls -R playwright-report || echo "Playwright report not found"
-          echo "Playwright HTML Reporter contents:"
-          ls -R playwright-html-report || echo "Playwright HTML report not found"
+# echo "Playwright HTML Reporter contents:"
+# ls -R playwright-html-report || echo "Playwright HTML report not found"
 
       # 8️⃣ Upload artifacts
       - name: Upload Allure Report
@@ -71,13 +71,13 @@ jobs:
           path: playwright-report/
           if-no-files-found: warn
 
-      - name: Upload Playwright HTML Reporter
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-html-report
-          path: playwright-html-report/
-          if-no-files-found: warn
+      # - name: Upload Playwright HTML Reporter
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: playwright-html-report
+      #     path: playwright-html-report/
+      #     if-no-files-found: warn
 
   publish-reports:
     needs: test
@@ -106,12 +106,12 @@ jobs:
           name: playwright-report
           path: playwright-report
 
-      - name: Download Playwright HTML Reporter
-        continue-on-error: true
-        uses: actions/download-artifact@v4
-        with:
-          name: playwright-html-report
-          path: playwright-html-report
+      # - name: Download Playwright HTML Reporter
+      #   continue-on-error: true
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: playwright-html-report
+      #     path: playwright-html-report
 
       # 3️⃣ Verify downloaded reports
       - name: Verify reports
@@ -120,8 +120,8 @@ jobs:
           ls -R allure-report || echo "Allure report not available"
           echo "Playwright built-in report contents:"
           ls -R playwright-report || echo "Playwright report not available"
-          echo "Playwright HTML Reporter contents:"
-          ls -R playwright-html-report || echo "Playwright HTML report not available"
+        # echo "Playwright HTML Reporter contents:"
+        # ls -R playwright-html-report || echo "Playwright HTML report not available"
 
       # 4️⃣ Prepare combined reports directory for GitHub Pages
       - name: Prepare reports for deployment
@@ -129,7 +129,7 @@ jobs:
           mkdir -p gh-pages-deploy
           [ -d "allure-report" ] && cp -r allure-report gh-pages-deploy/ || echo "Skipping allure-report (not found)"
           [ -d "playwright-report" ] && cp -r playwright-report gh-pages-deploy/ || echo "Skipping playwright-report (not found)"
-          [ -d "playwright-html-report" ] && cp -r playwright-html-report gh-pages-deploy/ || echo "Skipping playwright-html-report (not found)"
+       # [ -d "playwright-html-report" ] && cp -r playwright-html-report gh-pages-deploy/ || echo "Skipping playwright-html-report (not found)"
           echo "Combined reports directory contents:"
           ls -R gh-pages-deploy
 
@@ -147,5 +147,6 @@ jobs:
         run: |
           echo "Reports Published!"
           echo "Playwright Built-in: https://Sugumaraja.github.io/PW_FrameWork_Practise/playwright-report/index.html"
-          echo "Playwright HTML Reporter: https://Sugumaraja.github.io/PW_FrameWork_Practise/playwright-html-report/index.html"
           echo "Allure: https://Sugumaraja.github.io/PW_FrameWork_Practise/allure-report/index.html"
+
+         # echo "Playwright HTML Reporter: https://Sugumaraja.github.io/PW_FrameWork_Practise/playwright-html-report/index.html"

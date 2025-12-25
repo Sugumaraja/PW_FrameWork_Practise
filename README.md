@@ -1,4 +1,4 @@
-# PWFWDemo Automation Reports
+# PW_FW Automation Reports
 
 Welcome to the **PW_FrameWork_Practise** automation project. Below you can find the latest test results and HTML reports.
 
