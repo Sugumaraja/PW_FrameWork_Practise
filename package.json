@@ -1,0 +1,32 @@
+{
+  "name": "pw-framework-practise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "clear": "powershell -Command \"Remove-Item -Path 'allure-results', 'allure-report', 'test-results' -Recurse",
+    "test": "npx playwright test",
+    "pw-report": "npx playwright show-report",
+    "gen-allure": "npx allure generate allure-results --clean -o allure-report",
+    "allure-report": "npx allure open allure-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.3",
+    "allure-commandline": "^2.36.0",
+    "allure-playwright": "^3.4.3"
+  },
+  "dependencies": {
+    "csv-parse": "^6.1.0"
+  },
+  "overrides": {
+    "axios": "^1.6.0",
+    "html-minifier": "^4.0.0",
+    "tar-fs": "^3.0.0",
+    "ws": "^8.17.0"
+  }
+}

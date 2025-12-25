@@ -1,0 +1,6 @@
+firstName,lastName,telephone,password,subscribeNewsletter
+John,Doe,5551234567,P@ssword123,true
+Jane,Smith,5559876543,Secure!456,false
+Michael,Brown,5554443322,MikeyB789,true
+Sarah,Wilson,5556667788,Sunshine!22,true
+David,Miller,5552221100,DaveM1990,false
