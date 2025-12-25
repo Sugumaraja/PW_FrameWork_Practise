@@ -6,6 +6,7 @@ Welcome to the **PW_FrameWork_Practise** automation project. Below you can find 
 
 ## Workflow Status
 
+
 [![Playwright Tests](https://github.com/Sugumaraja/PW_FrameWork_Practise/actions/workflows/playwright.yml/badge.svg)](https://github.com/Sugumaraja/PW_FrameWork_Practise/actions/workflows/playwright.yml)
 
 ---
