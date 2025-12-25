@@ -6,7 +6,7 @@ import { productListPage } from '../pages/ProductListPage';
 
 
 
-test('productCount',async({page})=>{
+test('productCount@smoke',async({page})=>{
     let lp=new LoginPage(page);
     await lp.goToLogin();
     await lp.doLogin('sugu@nal.com','Pass');

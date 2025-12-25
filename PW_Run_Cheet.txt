@@ -1,0 +1,116 @@
+# **🎯 Playwright Cheat Sheet - Complete List**
+
+## **📁 CONFIGURATION**
+`npx playwright init` - Generate default config  
+`npx playwright init --config=playwright.ci.js` - Create specific config
+
+## **🎯 BASIC TEST RUNS**
+`npx playwright test` - Run all tests  
+`npx playwright test tests/login.spec.ts` - Run specific file  
+`npx playwright test tests/` - Run folder
+
+## **🔍 FILTERING TESTS**
+`npx playwright test --grep "login"` - Run tests with "login" in title  
+`npx playwright test --grep-invert "skip"` - Exclude tests with "skip"  
+`npx playwright test -g "smoke"` - Short flag
+
+## **🌐 BROWSER/PROJECT SELECTION**
+`npx playwright test --project=chromium` - Run only chromium  
+`npx playwright test --project=firefox` - Run only firefox  
+`npx playwright test --project="Mobile.*"` - Run mobile projects
+
+## **⚙️ CONFIG FILE COMMANDS**
+`npx playwright test --config=playwright.config.js` - Use specific config  
+`npx playwright test --config=playwright.ci.config.js` - CI config  
+`npx playwright test --config=playwright.local.config.js` - Local config
+
+## **🚀 PARALLEL EXECUTION**
+`npx playwright test --workers=4` - Run 4 parallel workers  
+`npx playwright test --workers=auto` - Auto-detect CPU cores  
+`npx playwright test --workers=1` - Run serially (debugging)
+
+## **⏱️ TIMEOUT CONTROL**
+`npx playwright test --timeout=120000` - Set 2min timeout  
+`npx playwright test --timeout=0` - Disable timeout
+
+## **🐛 DEBUGGING COMMANDS**
+`npx playwright test --debug` - Debug mode  
+`npx playwright test --ui` - Playwright UI mode  
+`npx playwright test --trace=on` - Enable tracing
+
+## **👁️ HEADED/UI MODE**
+`npx playwright test --headed` - Run with browser UI  
+`npx playwright test --headed --slow-mo=100` - Slow motion for visual
+
+## **📊 REPORTERS**
+`npx playwright test --reporter=list` - Console output  
+`npx playwright test --reporter=line` - Single line reporter  
+`npx playwright test --reporter=dot` - Dots for tests  
+`npx playwright test --reporter=html` - HTML report  
+`npx playwright test --reporter=json` - JSON output  
+`npx playwright test --reporter=junit` - JUnit XML  
+`npx playwright test --reporter=null` - No output
+
+## **📁 OUTPUT CONTROL**
+`npx playwright test --output=tests/output/` - Custom output directory  
+`npx playwright test --quiet` - Less verbose output  
+`npx playwright test --verbose` - More verbose output
+
+## **🔄 RETRY & RE-RUN**
+`npx playwright test --retries=3` - Retry failed tests 3 times  
+`npx playwright test --retries=0` - No retries  
+`npx playwright test --last-failed` - Run only failed from last run  
+`npx playwright test --list` - List all tests without running
+
+## **🎭 COMBINATION FILTERS**
+`npx playwright test tests/login.spec.ts --grep="API" --project=chromium`  
+`npx playwright test --grep="smoke" --workers=2 --headed`
+
+## **📂 FILE PATTERNS**
+`npx playwright test **/*.spec.ts` - All spec files  
+`npx playwright test tests/**/*.test.ts` - All test files  
+`npx playwright test *api*.spec.ts` - Files with "api" in name
+
+## **🌍 ENVIRONMENT VARIABLES**
+`BASE_URL=https://staging.com npx playwright test`  
+`CI=true npx playwright test --workers=1`  
+`DEBUG=pw:api npx playwright test --headed`
+
+## **🔧 TROUBLESHOOTING**
+`npx playwright test --dry-run` - Validate without running  
+`npx playwright --version` - Check Playwright version  
+`npx playwright install` - Install browsers  
+`npx playwright install chromium` - Install specific browser
+
+## **🌟 QUICK COMBINATIONS**
+`npx playwright test --headed --workers=1 --timeout=60000` - Quick local  
+`npx playwright test --workers=4 --retries=2 --reporter=junit` - Quick CI  
+`npx playwright test --debug --workers=1 --headed --timeout=0` - Quick debug  
+`npx playwright test --grep="regression" --workers=2 --retries=1` - Regression
+
+## **🎯 USE CASE SPECIFIC**
+`npx playwright test --grep="smoke" --workers=2 --headed` - Smoke tests  
+`npx playwright test --workers=auto --retries=1 --reporter=html,junit` - Full regression  
+`npx playwright test --last-failed --debug --workers=1 --headed` - Debug failing tests
+
+## **📦 NPM SCRIPTS (add to package.json)**
+```json
+"test": "npx playwright test",
+"test:ci": "npx playwright test --workers=4 --retries=2",
+"test:local": "npx playwright test --headed --workers=1",
+"test:debug": "npx playwright test --debug --timeout=0",
+"test:smoke": "npx playwright test --grep=\"smoke\"",
+"test:chrome": "npx playwright test --project=chromium",
+"test:failed": "npx playwright test --last-failed",
+"test:list": "npx playwright test --list"
+```
+
+---
+
+**📌 Pro Tips:**
+- Use `--config=` for different environments
+- Use `--grep` for test filtering  
+- Use `--workers` for parallel execution
+- Use `--debug` or `--ui` for debugging
+- Use `--reporter=` for different output formats
+- Combine flags for specific scenarios
