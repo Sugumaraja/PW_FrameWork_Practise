@@ -102,7 +102,7 @@ pipeline {
         // ============================================
         // DEV Environment Tests
         // ============================================
-        stage('🔧 DEV Tests') {
+        stage('🔧 QA Tests') {
             steps {
                 echo '============================================'
                 echo '🎭 Installing Playwright browsers...'
@@ -119,7 +119,7 @@ pipeline {
                 echo '============================================'
                 script {
                     env.DEV_TEST_STATUS = sh(
-                        script: 'npx playwright test --grep "@login" --config=playwright.config.dev.ts',
+                        script: 'npx playwright test tests/Register.spec.ts --config=playwright.config.ts',
                         returnStatus: true
                     ) == 0 ? 'success' : 'failure'
                 }
@@ -271,7 +271,7 @@ pipeline {
                 echo '============================================'
                 script {
                     env.STAGE_TEST_STATUS = sh(
-                        script: 'npx playwright test --grep "@login" --config=playwright.config.stage.ts',
+                        script: 'npx playwright test tests/Register.spec.ts --config=playwright.config.ts',
                         returnStatus: true
                     ) == 0 ? 'success' : 'failure'
                 }
