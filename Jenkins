@@ -66,10 +66,9 @@ pipeline {
                 ''', allowEmptyArchive: true
             }
         }
-    }
-    stage('Publish HTML Reports') {
-    steps {
-        publishHTML([
+        stage('Publish HTML Reports') {
+            steps {
+             publishHTML([
             allowMissing: true,
             alwaysLinkToLastBuild: true,
             keepAll: true,
@@ -78,7 +77,7 @@ pipeline {
             reportName: 'Playwright HTML Report'
         ])
 
-        publishHTML([
+            publishHTML([
             allowMissing: true,
             alwaysLinkToLastBuild: true,
             keepAll: true,
@@ -87,6 +86,8 @@ pipeline {
             reportName: 'Allure HTML Report'
         ])
     }
+    }
+    
 }
 
     post {
