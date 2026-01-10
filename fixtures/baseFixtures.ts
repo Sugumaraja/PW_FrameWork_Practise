@@ -1,7 +1,7 @@
 import{test as base,expect} from '@playwright/test'
 import { HomePage } from '../pages/HomePage'
 import { LoginPageFixture } from '../pages/LoginPageFixture'
-type Myfeature={homePage:HomePage}
+type Myfeature={homePage:HomePage};
 export const test=base.extend<Myfeature>({
    homePage: async ({page,baseURL},use,testInfo) => {
    const hp=new LoginPageFixture(page); 

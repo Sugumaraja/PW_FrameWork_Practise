@@ -1,0 +1,63 @@
+pipeline {
+    agent any
+
+    options {
+        timeout(time: 60, unit: 'MINUTES')
+    }
+
+    triggers {
+        // Optional: trigger on SCM changes
+        pollSCM('H/5 * * * *')
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Setup Node.js') {
+            steps {
+                script {
+                    // Requires NodeJS plugin configured in Jenkins (Manage Jenkins → Tools)
+                    env.NODEJS_HOME = tool name: 'node-lts', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+                    env.PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
+                }
+                sh 'node -v'
+                sh 'npm -v'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm ci'
+            }
+        }
+
+        stage('Install Playwright Browsers') {
+            steps {
+                sh 'npx playwright install --with-deps'
+            }
+        }
+
+        stage('Run Playwright Tests') {
+            steps {
+                sh 'npx playwright test'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
+        }
+        failure {
+            echo 'Playwright tests failed'
+        }
+        success {
+            echo 'Playwright tests passed'
+        }
+    }
+}
