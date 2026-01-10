@@ -112,7 +112,7 @@ pipeline {
                 echo '============================================'
                 echo '🧹 Cleaning previous results...'
                 echo '============================================'
-                bat 'rm -rf allure-results playwright-report playwright-html-report test-results'
+                bat 'rmdir allure-results playwright-report playwright-html-report test-results'
 
                 echo '============================================'
                 echo '🧪 Running DEV tests...'
@@ -188,7 +188,7 @@ pipeline {
                 echo '============================================'
                 echo '🧹 Cleaning previous results...'
                 echo '============================================'
-                bat 'rm -rf allure-results playwright-report playwright-html-report test-results'
+                bat 'rmdir allure-results playwright-report playwright-html-report test-results'
 
                 echo '============================================'
                 echo '🧪 Running QA tests...'
@@ -264,7 +264,7 @@ pipeline {
                 echo '============================================'
                 echo '🧹 Cleaning previous results...'
                 echo '============================================'
-                bat 'rm -rf allure-results playwright-report playwright-html-report test-results'
+                bat 'rmdir allure-results playwright-report playwright-html-report test-results'
 
                 echo '============================================'
                 echo '🧪 Running STAGE tests...'
@@ -340,7 +340,7 @@ pipeline {
                 echo '============================================'
                 echo '🧹 Cleaning previous results...'
                 echo '============================================'
-                bat 'rm -rf allure-results playwright-report playwright-html-report test-results'
+                bat 'rmdir allure-results playwright-report playwright-html-report test-results'
 
                 echo '============================================'
                 echo '🧪 Running PROD tests...'
