@@ -67,19 +67,40 @@ pipeline {
             }
         }
     }
+    stage('Publish HTML Reports') {
+    steps {
+        publishHTML([
+            allowMissing: true,
+            alwaysLinkToLastBuild: true,
+            keepAll: true,
+            reportDir: 'playwright-report',
+            reportFiles: 'index.html',
+            reportName: 'Playwright HTML Report'
+        ])
+
+        publishHTML([
+            allowMissing: true,
+            alwaysLinkToLastBuild: true,
+            keepAll: true,
+            reportDir: 'allure-report',
+            reportFiles: 'index.html',
+            reportName: 'Allure HTML Report'
+        ])
+    }
+}
 
     post {
        
     always {
         echo 'Pipeline completed'
 
-        echo "==================== REPORT LINKS ===================="
+        // echo "==================== REPORT LINKS ===================="
 
-        echo "Playwright Report URL:"
-        echo "${env.BUILD_URL}artifact/playwright-report/index.html"
+        // echo "Playwright Report URL:"
+        // echo "${env.BUILD_URL}artifact/playwright-report/index.html"
 
-        echo "Allure Report URL:"
-        echo "${env.BUILD_URL}artifact/allure-report/index.html"
+        // echo "Allure Report URL:"
+        // echo "${env.BUILD_URL}artifact/allure-report/index.html"
 
         echo "======================================================"
     }
