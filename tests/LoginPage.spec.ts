@@ -8,5 +8,5 @@ test('Login page test', async ({ page }) => {
     await loginPage.goToLogin();
     let hp= await loginPage.doLogin('tester@yopmail.com', 'Pass');
     let retVal= await hp.getTitle();
-      await expect(page).toHaveTitle(retVal);
+    await expect(page).toHaveTitle(retVal);
 })

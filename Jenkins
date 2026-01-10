@@ -87,9 +87,20 @@ pipeline {
         ])
     }
     }
+    stage('Print Report URLs') {
+    steps {
+        script {
+            def buildUrl = env.BUILD_URL  // e.g. http://localhost:8080/job/Playwright%20sample/17/
+
+            echo "==================== REPORT LINKS ===================="
+            echo "Playwright Report: ${buildUrl}Playwright_HTML_Report/index.html"
+            echo "Allure Report: ${buildUrl}Allure_HTML_Report/index.html"
+            echo "======================================================"
+        }
+    }
+}
     
 }
-
     post {
        
     always {
