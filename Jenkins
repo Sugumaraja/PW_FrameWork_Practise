@@ -69,14 +69,26 @@ pipeline {
     }
 
     post {
-        always {
-            echo 'Pipeline completed'
-        }
-        failure {
+       
+    always {
+        echo 'Pipeline completed'
+
+        echo "==================== REPORT LINKS ===================="
+
+        echo "Playwright Report URL:"
+        echo "${env.BUILD_URL}artifact/playwright-report/index.html"
+
+        echo "Allure Report URL:"
+        echo "${env.BUILD_URL}artifact/allure-report/index.html"
+
+        echo "======================================================"
+    }
+    failure {
             echo 'Tests failed, but reports are available'
         }
-        success {
+    success {
             echo 'Pipeline successful'
-        }
     }
+    }
+
 }
